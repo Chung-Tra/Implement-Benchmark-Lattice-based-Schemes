@@ -53,3 +53,54 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# ===========================================================================
+# Project-specific (NT219 PQC benchmark)
+# ===========================================================================
+
+# Build output (Makefile BINDIR=build) + CMake out-of-source trees
+/build/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+# liboqs ref/neon build trees from WP3 (build-ref/, build-neon/)
+/build-*/
+
+# Third-party sources if accidentally cloned INTO the repo (huge; keep out)
+/openssl/
+/liboqs/
+/oqs-provider/
+/third_party/
+
+# Generated analysis + transient run logs
+/analysis_out/
+*.log
+core
+
+# Secrets -- NEVER commit private keys (WP4 creates srv.key, ca.key, ...)
+*.key
+*-prv.pem
+*-private*.pem
+*.srl
+*.csr
+
+# Python (tools/analyze.py)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node (only if you generate docs/reports with the docx tooling)
+node_modules/
+
+# Editor / IDE / OS noise
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# NOTE: data/ is intentionally NOT ignored (raw CSVs are a deliverable, brief 11).
+# If raw CSVs get too big, uncomment to keep only summaries:
+# /data/raw/
